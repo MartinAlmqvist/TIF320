@@ -14,4 +14,4 @@ module purge
 module load GPAW/22.8.0-foss-2022a
 
 # Run program
-srun gpaw python ga.py
+srun gpaw python Task3.py
