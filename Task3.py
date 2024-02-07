@@ -34,4 +34,3 @@ calc.write('na_atoms_wavefunction.gpw')
 
 with open('total_energy.txt', 'w') as f:
     f.write(f'Total energy: {total_energy} eV')
-
