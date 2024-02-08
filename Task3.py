@@ -14,7 +14,7 @@ positions = np.array([(0, 0, 0), (a, 0, 0), (0, a, 0), (0, 0, a), (a, a, 0), (a,
 
 
 symbols = 'Na6'
-na_atoms = Atoms(symbols=symbols, positions=positions, cell=cell)
+na_atoms = Atoms(symbols='Na6', positions=positions, cell=cell)
 
 # Code from ga.py
 calc = GPAW(nbands=10, #Number of electronic bands
