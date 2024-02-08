@@ -29,7 +29,7 @@ calc = GPAW(nbands=10, #Number of electronic bands
             basis='dzp')
 
 # Set up the structure in GPAW
-#na_atoms.set_calculator(calc)
+na_atoms.set_calculator(calc)
 
 # Relax
 #dyn = GPMin(na_atoms, trajectory='relax_ref.traj', logfile='relax_ref.log')
