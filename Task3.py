@@ -32,17 +32,15 @@ calc = GPAW(nbands=10, #Number of electronic bands
 na_atoms.set_calculator(calc)
 
 # Relax
-#dyn = GPMin(na_atoms, trajectory='relax_ref.traj', logfile='relax_ref.log')
-#dyn.run(fmax=0.02, steps=100)
-
-
+dyn = GPMin(na_atoms, trajectory='relax_ref.traj', logfile='relax_ref.log')
+dyn.run(fmax=0.02, steps=100)
 
 # Get the total energy of the relaxed structure
 total_energy = na_atoms.get_potential_energy()
 write("After.xyz",na_atoms)
 
 # Save the wavefunction in a .gpw file
-#calc.write('na_atoms_wavefunction.gpw')
+calc.write('na_atoms_wavefunction.gpw')
 
 # Save the total energy in a .txt file
 #with open('total_energy.txt', 'w') as f:
