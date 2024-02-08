@@ -1,6 +1,7 @@
 from ase import Atoms
 from gpaw import GPAW, FermiDirac
 from ase.optimize import GPMin
+import numpy as np
 
 # Define lattice constant
 a = 3.5
@@ -9,13 +10,15 @@ a = 3.5
 cell = [[a, 0, 0], [0, a, 0], [0, 0, a]]
 
 # Create a simple cubic lattice with 6 Na atoms
-positions = [(0, 0, 0), (a, 0, 0), (0, a, 0), (0, 0, a), (a, a, 0), (a, 0, a)]
-symbols = ['Na'] * 6
+positions = np.array([(0, 0, 0), (a, 0, 0), (0, a, 0), (0, 0, a), (a, a, 0), (a, 0, a)])
+
+
+symbols = 'Na6'
 na_atoms = Atoms(symbols=symbols, positions=positions, cell=cell)
 
 # Code from ga.py
-calc = GPAW(nbands=10,
-            h=0.25,
+calc = GPAW(nbands=10, #Number of electronic bands
+            h=0.25, #Grid spacing [Å]
             txt='out.txt',
             occupations=FermiDirac(0.05),
             setups={'Na': '1'},
@@ -37,4 +40,4 @@ calc.write('na_atoms_wavefunction.gpw')
 
 # Save the total energy in a .txt file
 with open('total_energy.txt', 'w') as f:
-    f.write(f'Total energy: {total_energy} eV')
+    f.write(f'Total energy: {total_energy} eV') 
