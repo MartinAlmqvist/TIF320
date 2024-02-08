@@ -18,7 +18,7 @@ symbols = 'Na6'
 na_atoms = Atoms(symbols='Na6', positions=positions)
 na_atoms.center(5)
 
-ase.io.write("Before.xyz",na_atoms)
+write("Before.xyz",na_atoms)
 # Code from ga.py
 calc = GPAW(nbands=10, #Number of electronic bands
             h=0.25, #Grid spacing [Å]
@@ -39,7 +39,7 @@ calc = GPAW(nbands=10, #Number of electronic bands
 
 # Get the total energy of the relaxed structure
 total_energy = na_atoms.get_potential_energy()
-ase.io.write("After.xyz",na_atoms)
+write("After.xyz",na_atoms)
 
 # Save the wavefunction in a .gpw file
 #calc.write('na_atoms_wavefunction.gpw')
