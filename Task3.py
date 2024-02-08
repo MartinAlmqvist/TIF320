@@ -11,7 +11,7 @@ a = 4.5
 # cell = [[a, 0, 0], [0, a, 0], [0, 0, a]]
 
 # Create a simple cubic lattice with 6 Na atoms
-positions = [(0, 0, 0), (a, 0, 0), (0, a, 0), (0, 0, a), (a, a, 0), (a, 0, a)]
+positions = [(0, 0, 0), (a, 0, 0), (0, a, 0), (a/2, a/2, a/2), (a/2, a/2, -a/2), (a, a, 0)]
 
 
 symbols = 'Na6'
