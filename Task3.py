@@ -1,6 +1,7 @@
 from ase import Atoms
 from gpaw import GPAW, FermiDirac
 from ase.optimize import GPMin
+from ase.io import read, write
 import numpy as np
 
 # Define lattice constant
@@ -17,7 +18,7 @@ symbols = 'Na6'
 na_atoms = Atoms(symbols='Na6', positions=positions)
 na_atoms.center(5)
 
-ase.io.write("name.xyz",na_atoms)
+ase.io.write("Before.xyz",na_atoms)
 # Code from ga.py
 calc = GPAW(nbands=10, #Number of electronic bands
             h=0.25, #Grid spacing [Å]
@@ -35,9 +36,10 @@ calc = GPAW(nbands=10, #Number of electronic bands
 #dyn.run(fmax=0.02, steps=100)
 
 
-ase.io.write("Relax.xyz",na_atoms)
+
 # Get the total energy of the relaxed structure
 total_energy = na_atoms.get_potential_energy()
+ase.io.write("After.xyz",na_atoms)
 
 # Save the wavefunction in a .gpw file
 #calc.write('na_atoms_wavefunction.gpw')
