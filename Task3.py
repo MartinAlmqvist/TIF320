@@ -31,6 +31,9 @@ calc = GPAW(nbands=10, #Number of electronic bands
 # Set up the structure in GPAW
 na_atoms.set_calculator(calc)
 
+# Save the electron density to a cube file
+calc.write('electron_density.cube', data=calc.get_all_electron_density())
+
 # Relax
 dyn = GPMin(na_atoms, trajectory='relax_ref.traj', logfile='relax_ref.log')
 dyn.run(fmax=0.02, steps=100)
