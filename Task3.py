@@ -4,13 +4,13 @@ from ase.optimize import GPMin
 import numpy as np
 
 # Define lattice constant
-a = 3.5
+a = 4.5
 
 # Define lattice vectors for a simple cubic lattice
 cell = [[a, 0, 0], [0, a, 0], [0, 0, a]]
 
 # Create a simple cubic lattice with 6 Na atoms
-positions = np.array([(0, 0, 0), (a, 0, 0), (0, a, 0), (0, 0, a), (a, a, 0), (a, 0, a)])
+positions = [(0, 0, 0), (a, 0, 0), (0, a, 0), (0, 0, a), (a, a, 0), (a, 0, a)]
 
 
 symbols = 'Na6'
