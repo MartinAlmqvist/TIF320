@@ -7,15 +7,17 @@ import numpy as np
 a = 4.5
 
 # Define lattice vectors for a simple cubic lattice
-cell = [[a, 0, 0], [0, a, 0], [0, 0, a]]
+# cell = [[a, 0, 0], [0, a, 0], [0, 0, a]]
 
 # Create a simple cubic lattice with 6 Na atoms
 positions = [(0, 0, 0), (a, 0, 0), (0, a, 0), (0, 0, a), (a, a, 0), (a, 0, a)]
 
 
 symbols = 'Na6'
-na_atoms = Atoms(symbols='Na6', positions=positions, cell=cell)
+na_atoms = Atoms(symbols='Na6', positions=positions)
+na_atoms.center(5)
 
+ase.io.write("name.xyz",na_atoms)
 # Code from ga.py
 calc = GPAW(nbands=10, #Number of electronic bands
             h=0.25, #Grid spacing [Å]
@@ -26,12 +28,14 @@ calc = GPAW(nbands=10, #Number of electronic bands
             basis='dzp')
 
 # Set up the structure in GPAW
-na_atoms.set_calculator(calc)
+#na_atoms.set_calculator(calc)
 
 # Relax
 #dyn = GPMin(na_atoms, trajectory='relax_ref.traj', logfile='relax_ref.log')
 #dyn.run(fmax=0.02, steps=100)
 
+
+ase.io.write("Relax.xyz",na_atoms)
 # Get the total energy of the relaxed structure
 total_energy = na_atoms.get_potential_energy()
 
