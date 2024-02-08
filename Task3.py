@@ -33,7 +33,7 @@ na_atoms.set_calculator(calc)
 #dyn.run(fmax=0.02, steps=100)
 
 # Get the total energy of the relaxed structure
-#total_energy = na_atoms.get_potential_energy()
+total_energy = na_atoms.get_potential_energy()
 
 # Save the wavefunction in a .gpw file
 #calc.write('na_atoms_wavefunction.gpw')
@@ -41,3 +41,7 @@ na_atoms.set_calculator(calc)
 # Save the total energy in a .txt file
 #with open('total_energy.txt', 'w') as f:
 #    f.write(f'Total energy: {total_energy} eV') 
+
+f = open("total_energy.txt", "w")
+f.write(f'Total energy: {total_energy} eV')
+f.close()
