@@ -3,7 +3,7 @@
 #SBATCH -J GPAWTask1MartinLovisa # Name of the job
 #SBATCH -N 1 # Use 1 node
 #SBATCH -n 1 # Use only 1 core on that node
-#SBATCH -t 10:00:00 # Maximum time
+#SBATCH -t 1:00:00 # Maximum time
 #SBATCH -o std.out # stdout goes to this file
 #SBATCH -e err.out # stderr goes to this file
 
