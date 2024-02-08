@@ -12,6 +12,7 @@ module purge
 
 # Load desired modules
 module load GPAW/22.8.0-foss-2022a
+module load ASE/3.22.1-foss-2022a
 
 # Run program
 srun gpaw python Task3.py
