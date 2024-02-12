@@ -27,7 +27,7 @@ except Exception as e:
     print("An error occurred:", e)
 
 
-write("Before.xyz",atoms6_lowest)
+write("Task8_6atoms_Before.xyz",atoms6_lowest)
 # Code from ga.py
 calc = GPAW(nbands=10, #Number of electronic bands
             h=0.25, #Grid spacing [Å]
@@ -41,7 +41,7 @@ calc = GPAW(nbands=10, #Number of electronic bands
 atoms6_lowest.set_calculator(calc)
 
 # Save the electron density to a cube file
-calc.write('electron_density.cube', data=calc.get_all_electron_density())
+#calc.write('electron_density.cube', data=calc.get_all_electron_density())
 
 # Relax
 dyn = GPMin(atoms6_lowest, trajectory='relax_ref.traj', logfile='relax_ref.log')
@@ -49,10 +49,10 @@ dyn.run(fmax=0.02, steps=100)
 
 # Get the total energy of the relaxed structure
 total_energy = atoms6_lowest.get_potential_energy()
-write("After.xyz",atoms6_lowest)
+write("Task8_6atoms_After.xyz",atoms6_lowest)
 
 # Save the wavefunction in a .gpw file
-calc.write('na_atoms_wavefunction.gpw')
+#calc.write('na_atoms_wavefunction.gpw')
 
 f = open("total_energy.txt", "w")
 f.write(f'Total energy: {total_energy} eV')
