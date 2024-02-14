@@ -15,7 +15,7 @@ calc = GPAW(
     xc = 'PBE',
     basis = 'dzp',
     symmetry = {'point_group': False }, # Turn off point - group symmetry
-    charge = 251, # Charged system
+    charge = 1, # Charged system
     txt = 'output.gpaw-out' # Redirects calculator output to this file !
     )
 
