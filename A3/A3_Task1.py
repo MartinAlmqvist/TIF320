@@ -25,7 +25,7 @@ atoms.set_calculator(calc)
 dyn = NPT( # Some MD method
     atoms,
     temperature_K = 350 ,
-    timestep = 200* fs , # 200 fs equals 2ps of runtime is 10 steps of the MD simulation is made
+    timestep = 0.5* fs , # 200 fs equals 2ps of runtime is 10 steps of the MD simulation is made
     ttime = 20*fs , # Don ’t forget the fs !
     externalstress = 0 , # We don ’t use the barostat , but this needs to be set anyway !
     logfile = 'mdOutput.log',  # Outputs temperature ( and more ) to file at each timestep
@@ -35,7 +35,7 @@ dyn = NPT( # Some MD method
 trajectory = Trajectory('A3_Task1.traj', 'w' , atoms)
 dyn.attach(trajectory.write , interval =1) # Write the current positions etc . to file each timestep
 
-dyn.run(10) # Run 10 steps of MD simulation
+dyn.run(4000) # Run 10 steps of MD simulation
 
 write('A3_Task1_After.xyz', atoms)
 calc.write('atoms_wavefunction.gpw')
