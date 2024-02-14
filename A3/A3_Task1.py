@@ -10,8 +10,6 @@ from ase.io.trajectory import Trajectory
 
 atoms = read("Task1.xyz")
 calc = GPAW(
-    nbands=10, #Number of electronic bands
-    h=0.25, #Grid spacing [Å]
     mode = 'lcao',
     xc = 'PBE',
     basis = 'dzp',
