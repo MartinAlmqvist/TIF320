@@ -9,7 +9,7 @@ from ase.io.trajectory import Trajectory
 from ase.md.npt import NPT
 
 
-atoms = read("Task1.xyz")
+atoms = read("Task_1_our.xyz")
 calc = GPAW(
     mode = 'lcao',
     xc = 'PBE',
