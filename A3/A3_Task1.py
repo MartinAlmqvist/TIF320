@@ -1,11 +1,12 @@
 from ase.db import connect
 from ase.io import read, write
 from ase import Atoms
-from gpaw import GPAW, FermiDirac, NPT
+from gpaw import GPAW, FermiDirac
 from ase.optimize import GPMin
 import numpy as np
 from ase.units import fs, kB
 from ase.io.trajectory import Trajectory
+from ase.md.npt import NPT
 
 
 atoms = read("Task1.xyz")
