@@ -35,21 +35,36 @@ E_pot =data[:, 2]
 E_kin = data[:, 3]
 
 print(len(temp))
-length = 50
+length = 21
 bath_size = int(len(temp)/length)
 print(bath_size)
 
-for i in range(length):
-    
-    average = np.mean(temp[i*bath_size:i*bath_size + bath_size])
-    print(average)
-    
 
-traj = Trajectory('cluster24.traj')
+averages = []
+
+""" for i in range(len(temp)):
+    average = np.mean(temp[i * bath_size: i * bath_size + bath_size])
+    #average = np.mean(temp[:i])
+    averages.append(average) """
+
+for i in range(length):
+    average = np.mean(temp[i * bath_size: i * bath_size + bath_size])
+    #average = np.mean(temp[:i])
+    averages.append(average)    
+
+# Plot the averages
+plt.plot(range(length), averages, marker='o', linestyle='-', color='b')
+plt.xlabel('Batch number')
+plt.ylabel('Batch average Temperature')
+plt.title('Average Temperature over Batch')
+plt.savefig('Figures/Task_1_Batch.png')
+plt.show()
+
+""" traj = Trajectory('cluster24.traj')
 index = int(len(traj)*(4/6))
 atoms = traj[index]
 
-write("Task1.xyz",atoms)
+write("Task1.xyz",atoms) """
 
 
 plt.plot(x, temp)
@@ -61,10 +76,10 @@ plt.show()
 
 plt.plot(x, E_tot, label = 'Total Energy')
 plt.plot(x, E_pot, label = 'Potential Energy')
-plt.plot(x, E_kin, label = 'Kinetic Energy')
+#plt.plot(x, E_kin, label = 'Kinetic Energy')
 plt.xlabel('Time [ps]')
 plt.ylabel('Energy [eV]')
 plt.title('Energy Convergence over Time')
 plt.legend()
-plt.savefig('Figures/Task_1_energy.png')
-plt.show() 
+plt.savefig('Figures/Task_1_energy_zoom.png')
+plt.show()  
