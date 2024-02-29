@@ -8,6 +8,7 @@ import seaborn as sns
 from ase.io.trajectory import Trajectory
 
 trajectory_file = 'Data/A3_Task1_Mars.traj'
+#trajectory_file = 'Data/NaCluster24.traj'
 traj = Trajectory(trajectory_file)
 
 unique_elements = set()
@@ -29,10 +30,9 @@ print(element_1, element_2)
 all_distances = []
 total_frames = len(traj)
 start_index = int(0 * total_frames)
-
+print(total_frames)
 all_distances = []
 
-# Iterate through frames starting from the last 10%
 for i in range(start_index, total_frames):
     frame = traj[i]
     atomic_numbers = frame.get_atomic_numbers()
@@ -46,4 +46,4 @@ for i in range(start_index, total_frames):
 print(np.shape(all_distances)) 
 
 all_distances = np.array(all_distances).flatten()
-np.savetxt('distances_task2.txt', all_distances, delimiter='\t')
+np.savetxt('distances_task2_short.txt', all_distances, delimiter='\t')
