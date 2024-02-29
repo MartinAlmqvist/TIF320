@@ -6,7 +6,7 @@ from gpaw import GPAW, FermiDirac, PW
 from ase.optimize import GPMin
 import numpy as np
 
-directory = "Results/7/"
+directory = "Results/5_2/"
 
 try:
     db6 = connect("A2_6/gadb.db")
@@ -33,9 +33,9 @@ calc = GPAW(nbands=10,  # Number of electronic bands
             txt='out.txt',
             occupations=FermiDirac(0.05),
             setups={'Na': '1'},
-            mode=PW(500),
+            mode='pw',
             #basis='tzp',
-            xc='LDA',
+            xc='PBE',
             )
 
 # Set up the structure in GPAW
@@ -44,10 +44,10 @@ atom6_second_lowest.set_calculator(calc)
 
 # Relax
 dyn_lowest = GPMin(atoms6_lowest, trajectory=f'{directory}relax_ref_lowest.traj', logfile=f'{directory}relax_ref_lowest.log')
-dyn_lowest.run(fmax=0.02, steps=100)
+dyn_lowest.run(fmax=0.01, steps=100)
 
 dyn_second_lowest = GPMin(atom6_second_lowest, trajectory=f'{directory}relax_ref_second_lowest.traj', logfile=f'{directory}relax_ref_second_lowest.log')
-dyn_second_lowest.run(fmax=0.02, steps=100)
+dyn_second_lowest.run(fmax=0.01, steps=100)
 
 # Get the total energy of the relaxed structure
 final_energy_lowest = atoms6_lowest.get_total_energy()
@@ -61,7 +61,7 @@ diff_second_lowest = initial_energy_second_lowest - final_energy_second_lowest
 write(f'{directory}Task8_6atoms_lowest_After.xyz', atoms6_lowest)
 write(f'{directory}Task8_6atoms_second_lowest_After.xyz', atom6_second_lowest)
 
-with open(f'{directory}Task_8_7.txt', "w") as f:
+with open(f'{directory}Task_8_5_2.txt', "w") as f:
     f.write(f'Initial energy lowest: {initial_energy_lowest} eV\n')
     f.write(f'Final energy lowest: {final_energy_lowest} eV \n')
     f.write(f'Energy diff: {diff_lowest} eV\n \n')

@@ -24,20 +24,24 @@ for i in range(8000, 12000):
 
     # Calculate distances between oxygen atoms
     distances_between_oxygen = oxygen_atoms.get_all_distances(mic=True)
-    lower_triangle = np.tril(distances_between_oxygen, k=-1)
+    #lower_triangle = np.tril(distances_between_oxygen, k=-1)
+    lower_triangle = distances_between_oxygen
 
     # Remove all duplicates
     all_distances.append(lower_triangle.flatten())
     
 
 all_distances = np.array(all_distances)
+
 print(len(all_distances))
 
 nonzero_indices = np.nonzero(all_distances)
 
 # Use the indices to get the non-zero elements
 distances = all_distances[nonzero_indices]
+distances = np.sort(distances)
 
 print(len(distances))
+print(distances)
 
-np.savetxt('distances_task3.txt', distances, delimiter='\t')
+np.savetxt('distances_task3_with_duplicates.txt', distances, delimiter='\t')
