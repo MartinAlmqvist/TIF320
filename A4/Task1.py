@@ -14,18 +14,6 @@ calc = GPAW(xc='PBE',
             kpts=(12, 12, 12),
             txt='calculation.txt')
 
-# Open file in append mode ("a") to accumulate results
-import numpy as np
-from gpaw import GPAW, PW, FermiDirac
-from ase.build import bulk
-
-x = np.linspace(3.5, 4.5, 10)  # Generate 10 points from 3.5 to 4.5
-
-calc = GPAW(xc='PBE',
-            mode=PW(450),
-            kpts=(12, 12, 12),
-            txt='calculation.txt')
-
 # Open files in append mode ("a") to accumulate results
 with open("total_energy_gold.txt", "a") as au,\
      open("total_energy_pt.txt", "a") as pt,\

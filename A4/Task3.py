@@ -19,7 +19,8 @@ for element in elements:
     with open(f"total_energy_{element}.txt", "a") as elementfile:
         # Create slab
         surface = fcc111(element, (3, 3, 3), a=lattice_constants[element], vacuum=6.0)
-        surface.set_calculator(get_calc(element))
+        calc = get_calc(element)
+        surface.set_calculator(calc)
         write(f"{element}_before_structure.xyz", surface)
         
         # Relax slab
@@ -34,3 +35,4 @@ for element in elements:
         
         # Write surface energy to file
         elementfile.write(f'Surface energy of {element}: {surface_energy:.4f} eV/Angstrom^2\n')
+        calc.write(f'{element}_surface_relaxed.gpaw')
