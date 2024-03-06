@@ -32,8 +32,9 @@ for element in elements:
         # Calculate surface energy
         A = surface.get_volume() / (2 * surface.cell[2, 2])  # Surface area of the slab
         surface_energy = E_surface / A  # Surface energy per unit area
-        
+
         # Write surface energy to file
         elementfile.write(f'Surface energy of {element}: {surface_energy:.4f} eV/Angstrom^2\n')
         calc.write(f'{element}_surface_relaxed.gpaw')
-        
+        with open(f"Cell_{element}.txt", "a") as cellprop:
+            cellprop.write(f'Vol: {surface.get_volume()}, cell[2,2]: {surface.cell[2, 2]}\n')

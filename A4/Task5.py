@@ -22,7 +22,7 @@ thermo = IdealGasThermo(vib_energies=vib_energies,
                         geometry='linear',
                         symmetrynumber=2, spin=0)
 
-Entropy = thermo.get_entropy(temperature=298.15, pressure=101325.)
+Entropy = thermo.get_entropy(temperature=300, pressure=101325.)
 with open(f"Energy_O2_task5.txt", "a") as elementfile:
     elementfile.write(str(Entropy) + '\n')
 
