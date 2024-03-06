@@ -36,3 +36,4 @@ for element in elements:
         # Write surface energy to file
         elementfile.write(f'Surface energy of {element}: {surface_energy:.4f} eV/Angstrom^2\n')
         calc.write(f'{element}_surface_relaxed.gpaw')
+        
